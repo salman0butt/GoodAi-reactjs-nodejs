@@ -62,11 +62,11 @@ export const useShapeAnimation = (type: string, shapeProps: ShapeProps): UseShap
         const mesh = new THREE.Mesh(shape, material);
         scene.add(mesh);
 
-        camera.position.z = 10;
+        camera.position.z = 5;
 
         // animation
         const animate = () => {
-            requestAnimationFrame(animate);
+           requestAnimationFrame(animate);
             mesh.rotation.x += 0.01;
             mesh.rotation.y += 0.01;
             renderer.render(scene, camera);
