@@ -33,8 +33,8 @@ const App: React.FC = () => {
     const socket = useRef<Socket | null>(null);
 
     useEffect(() => {
-        const initRandomValue = async () => {
-            socket.current = await socketInit();
+        const initRandomValue = () => {
+            socket.current = socketInit();
             socket.current?.on(FETCH_RANDOM_VALUE, (randomValue: number) => {
                 if (randomValue !== width && randomValue !== height && randomValue !== radius) {
                     requestAnimationFrame(() => {
