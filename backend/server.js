@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
   setInterval(() => {
     const randomValue = Math.random() * 4 + 1;
     // emitting value
-    io.emit('randomValue', randomValue);
+    io.emit('FETCH_RANDOM_VALUE', randomValue);
   }, 10000);
 
   // disconnect

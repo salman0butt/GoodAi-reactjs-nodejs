@@ -51,7 +51,7 @@ export const useShapeAnimation = (type: string, shapeProps: ShapeProps): UseShap
                     shapeProps?.radius ?? 1,
                     shapeProps?.radius ?? 1,
                     shapeProps?.height ?? 2,
-                    32
+                    72
                 );
                 break;
             default:
@@ -62,7 +62,7 @@ export const useShapeAnimation = (type: string, shapeProps: ShapeProps): UseShap
         const mesh = new THREE.Mesh(shape, material);
         scene.add(mesh);
 
-        camera.position.z = 5;
+        camera.position.z = 10;
 
         // animation
         const animate = () => {

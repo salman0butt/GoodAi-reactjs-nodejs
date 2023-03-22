@@ -4,21 +4,18 @@ import { Sphere, Cylinder, Cube } from './components';
 import socketInit from './socket'
 import type { Socket } from 'socket.io-client';
 
-type SocketRandomType = {
-  randomValue: (value: number) => void;
-};
-
+const FETCH_RANDOM_VALUE: string = 'FETCH_RANDOM_VALUE';
 
 const App: React.FC = () => {
     const [width, setWidth] = useState<number>(1);
     const [height, setHeight] = useState<number>(1);
     const [radius, setRadius] = useState<number>(1);
-    const socket = useRef<Socket<SocketRandomType> | null>(null);
+    const socket = useRef<Socket | null>(null);
 
     useEffect(() => {
         const initRandomValue = () => {
             socket.current = socketInit();
-            socket.current?.on('randomValue', (randomValue: number) => {
+            socket.current?.on(FETCH_RANDOM_VALUE, (randomValue: number) => {
                 setWidth(randomValue);
                 setHeight(randomValue);
                 setRadius(randomValue);
@@ -27,7 +24,7 @@ const App: React.FC = () => {
         }
         initRandomValue();
         return () => {
-            socket.current?.off('randomValue');
+            socket.current?.off(FETCH_RANDOM_VALUE);
         };
     }, []);
 
