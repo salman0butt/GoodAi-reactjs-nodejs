@@ -9,16 +9,13 @@ const io = socketio(server);
 // port
 const PORT = process.env.PORT || 5000;
 
-let x = 0.01;
-let y = 0.01;
-
 io.on('connection', (socket) => {
   console.log('Connection connected');
   // sending random value
   setInterval(() => {
     // emitting value
-    x += 0.00000001;
-    y += 0.00000001;
+    const x = 0.01 * Math.random();
+    const y = 0.01 * Math.random();
     io.emit('FETCH_RANDOM_VALUE', { x, y });
   }, 100);
 

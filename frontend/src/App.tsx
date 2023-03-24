@@ -4,9 +4,9 @@ import { Sphere, Cylinder, Cube } from './components';
 
 const App: React.FC = () => {
     // static dimentions
-    const width = 1;
-    const height = 2;
-    const radius = 1;
+    const width: number = 1;
+    const height: number = 2;
+    const radius: number = 1;
 
     return (
         <>
